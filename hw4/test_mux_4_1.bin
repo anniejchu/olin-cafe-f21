@@ -1,0 +1,105 @@
+#! /usr/local/bin/vvp
+:ivl_version "11.0 (stable)" "(v11_0-82-g5ea6ee13)";
+:ivl_delay_selection "TYPICAL";
+:vpi_time_precision + 0;
+:vpi_module "/usr/local/lib/ivl/system.vpi";
+:vpi_module "/usr/local/lib/ivl/vhdl_sys.vpi";
+:vpi_module "/usr/local/lib/ivl/vhdl_textio.vpi";
+:vpi_module "/usr/local/lib/ivl/v2005_math.vpi";
+:vpi_module "/usr/local/lib/ivl/va_math.vpi";
+:vpi_module "/usr/local/lib/ivl/v2009.vpi";
+S_0x55a828b84f70 .scope package, "$unit" "$unit" 2 1;
+ .timescale 0 0;
+S_0x55a828b82f90 .scope module, "test_mux_4_1" "test_mux_4_1" 3 1;
+ .timescale 0 0;
+v0x55a828bd4240_0 .var "d0", 0 0;
+v0x55a828bd4300_0 .var "d1", 0 0;
+v0x55a828bd43a0_0 .var "d2", 0 0;
+v0x55a828bd44a0_0 .var "d3", 0 0;
+v0x55a828bd4570_0 .var "s", 1 0;
+v0x55a828bd4610_0 .net "y", 0 0, L_0x55a828bd4c70;  1 drivers
+S_0x55a828b83120 .scope begin, "$ivl_for_loop0" "$ivl_for_loop0" 3 14, 3 14 0, S_0x55a828b82f90;
+ .timescale 0 0;
+v0x55a828b83300_0 .var/2s "i", 31 0;
+S_0x55a828bd35b0 .scope module, "UUT" "mux_4_1" 3 7, 4 1 0, S_0x55a828b82f90;
+ .timescale 0 0;
+    .port_info 0 /INPUT 1 "d0";
+    .port_info 1 /INPUT 1 "d1";
+    .port_info 2 /INPUT 1 "d2";
+    .port_info 3 /INPUT 1 "d3";
+    .port_info 4 /INPUT 2 "s";
+    .port_info 5 /OUTPUT 1 "y";
+v0x55a828bd3850_0 .net *"_ivl_1", 0 0, L_0x55a828bd46e0;  1 drivers
+v0x55a828bd3930_0 .net *"_ivl_3", 0 0, L_0x55a828bd4800;  1 drivers
+v0x55a828bd3a10_0 .net *"_ivl_4", 0 0, L_0x55a828bd48a0;  1 drivers
+v0x55a828bd3ad0_0 .net *"_ivl_7", 0 0, L_0x55a828bd4a60;  1 drivers
+v0x55a828bd3bb0_0 .net *"_ivl_8", 0 0, L_0x55a828bd4b30;  1 drivers
+v0x55a828bd3ce0_0 .net "d0", 0 0, v0x55a828bd4240_0;  1 drivers
+v0x55a828bd3da0_0 .net "d1", 0 0, v0x55a828bd4300_0;  1 drivers
+v0x55a828bd3e60_0 .net "d2", 0 0, v0x55a828bd43a0_0;  1 drivers
+v0x55a828bd3f20_0 .net "d3", 0 0, v0x55a828bd44a0_0;  1 drivers
+v0x55a828bd3fe0_0 .net "s", 1 0, v0x55a828bd4570_0;  1 drivers
+v0x55a828bd40c0_0 .net "y", 0 0, L_0x55a828bd4c70;  alias, 1 drivers
+L_0x55a828bd46e0 .part v0x55a828bd4570_0, 1, 1;
+L_0x55a828bd4800 .part v0x55a828bd4570_0, 0, 1;
+L_0x55a828bd48a0 .functor MUXZ 1, v0x55a828bd43a0_0, v0x55a828bd44a0_0, L_0x55a828bd4800, C4<>;
+L_0x55a828bd4a60 .part v0x55a828bd4570_0, 0, 1;
+L_0x55a828bd4b30 .functor MUXZ 1, v0x55a828bd4240_0, v0x55a828bd4300_0, L_0x55a828bd4a60, C4<>;
+L_0x55a828bd4c70 .functor MUXZ 1, L_0x55a828bd4b30, L_0x55a828bd48a0, L_0x55a828bd46e0, C4<>;
+    .scope S_0x55a828b82f90;
+T_0 ;
+    %vpi_call/w 3 10 "$dumpvars", 32'sb00000000000000000000000000000000, S_0x55a828bd35b0 {0 0 0};
+    %vpi_call/w 3 11 "$dumpfile", "mux_4_1.vcd" {0 0 0};
+    %vpi_call/w 3 13 "$display", "s d0 d1 d2 d3 | y" {0 0 0};
+    %fork t_1, S_0x55a828b83120;
+    %jmp t_0;
+    .scope S_0x55a828b83120;
+t_1 ;
+    %pushi/vec4 0, 0, 32;
+    %store/vec4 v0x55a828b83300_0, 0, 32;
+T_0.0 ;
+    %load/vec4 v0x55a828b83300_0;
+    %cmpi/s 64, 0, 32;
+    %jmp/0xz T_0.1, 5;
+    %load/vec4 v0x55a828b83300_0;
+    %parti/s 1, 5, 4;
+    %ix/load 4, 1, 0;
+    %flag_set/imm 4, 0;
+    %store/vec4 v0x55a828bd4570_0, 4, 1;
+    %load/vec4 v0x55a828b83300_0;
+    %parti/s 1, 4, 4;
+    %ix/load 4, 0, 0;
+    %flag_set/imm 4, 0;
+    %store/vec4 v0x55a828bd4570_0, 4, 1;
+    %load/vec4 v0x55a828b83300_0;
+    %parti/s 1, 3, 3;
+    %store/vec4 v0x55a828bd44a0_0, 0, 1;
+    %load/vec4 v0x55a828b83300_0;
+    %parti/s 1, 2, 3;
+    %store/vec4 v0x55a828bd43a0_0, 0, 1;
+    %load/vec4 v0x55a828b83300_0;
+    %parti/s 1, 1, 2;
+    %store/vec4 v0x55a828bd4300_0, 0, 1;
+    %load/vec4 v0x55a828b83300_0;
+    %parti/s 1, 0, 2;
+    %store/vec4 v0x55a828bd4240_0, 0, 1;
+    %delay 1, 0;
+    %vpi_call/w 3 22 "$display", "%b %b%b%b%b | %b", v0x55a828bd4570_0, v0x55a828bd4240_0, v0x55a828bd4300_0, v0x55a828bd43a0_0, v0x55a828bd44a0_0, v0x55a828bd4610_0 {0 0 0};
+    %load/vec4 v0x55a828b83300_0;
+    %addi 1, 0, 32;
+    %cast2;
+    %store/vec4 v0x55a828b83300_0, 0, 32;
+    %jmp T_0.0;
+T_0.1 ;
+    %end;
+    .scope S_0x55a828b82f90;
+t_0 %join;
+    %end;
+    .thread T_0;
+# The file index is used to find the file name in the following table.
+:file_names 5;
+    "N/A";
+    "<interactive>";
+    "-";
+    "test_mux_4_1.sv";
+    "mux_4_1.sv";
